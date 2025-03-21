@@ -1,4 +1,4 @@
-/* Make the background video fill the entire screen */
+/* Ensure video container takes full screen */
 .video-container {
     position: fixed;
     top: 0;
@@ -9,19 +9,18 @@
     z-index: -1;
 }
 
+/* Make the video adjust to screen size */
 .video-container video {
     position: absolute;
     top: 50%;
     left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
+    width: 100vw;
+    height: 100vh;
+    object-fit: cover; /* Ensures the video fills the screen without distortion */
     transform: translate(-50%, -50%);
-    object-fit: cover;
 }
 
-/* Overlay for dark effect */
+/* Dark overlay for better readability */
 .overlay {
     position: fixed;
     top: 0;
@@ -43,23 +42,7 @@
     z-index: 2;
 }
 
-/* Title Animation */
-.title {
-    font-size: 3rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    animation: fadeIn 2s ease-in-out;
-}
-
-/* Description */
-.description {
-    font-size: 1.3rem;
-    margin-top: 10px;
-    opacity: 0.8;
-}
-
-/* Register Button */
+/* Button Styling */
 button {
     padding: 15px 30px;
     font-size: 18px;
@@ -79,25 +62,19 @@ button:hover {
     transform: scale(1.1);
 }
 
-/* Smooth Fade-in Animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(-20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-/* Responsive Design */
+/* Responsive Fixes */
 @media (max-width: 768px) {
-    .title {
+    .video-container video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .content h1 {
         font-size: 2rem;
     }
-    
-    .description {
+
+    .content p {
         font-size: 1rem;
     }
 
