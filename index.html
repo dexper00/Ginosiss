@@ -8,24 +8,25 @@
 </head>
 <body>
 
-    <!-- Background Video -->
-<!-- Background Video Container -->
-<div class="video-container">
-    <video autoplay loop muted playsinline>
-        <source src="https://dexper00.github.io/Ginosiss/background.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-    </video>
-</div>
-
+    <!-- Background Video Container -->
+    <div class="video-container">
+        <video autoplay loop muted playsinline>
+            <source src="https://dexper00.github.io/Ginosiss/background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
 
     <!-- Overlay Content -->
     <div class="overlay"></div>
     <div class="content">
         <h1 class="title">GNOSIS 4.0</h1>
-        <p class="description">The Ultimate Tech Event - Register Now!</p>
+        <p class="description">The Ultimate Tech Events - Register Now!</p>
         
-        <!-- Payment & Registration Button -->
-        <button id="payButton">Pay to Register - ₹30</button>
+        <!-- Payment Button -->
+        <button id="payButton">Pay to Register - ₹20</button>
+
+        <!-- Share Screenshot Button (Initially Hidden) -->
+        <button id="shareButton" style="display: none;">Share Screenshot on WhatsApp</button>
 
         <!-- Proceed to Form Button (Initially Hidden) -->
         <button id="registerForm" style="display: none;">Proceed to Registration Form</button>
@@ -33,25 +34,29 @@
 
     <script>
         document.getElementById("payButton").addEventListener("click", function() {
-            let upiURL = "upi://pay?pa=nabeelalikkal5-1@okhdfcbank&pn=NabeelAlikkal&am=30&cu=INR";
+            let upiURL = "upi://pay?pa=lenadorin8@oksbi&pn=NabeelAlikkal&am=20&cu=INR";
             window.location.href = upiURL;
 
-            // After payment attempt, open WhatsApp automatically after 7 seconds
+            // Show "Share Screenshot" button after 10 seconds (allowing time for payment)
             setTimeout(() => {
-                let whatsappMessage = "Hey, I have completed my payment for GNOSIS 4.0. Here is my screenshot for verification.";
-                let whatsappURL = `https://api.whatsapp.com/send?phone=+91YOURNUMBER&text=${encodeURIComponent(whatsappMessage)}`;
-                
-                window.open(whatsappURL, "_blank");
+                document.getElementById("shareButton").style.display = "inline-block";
+            }, 10000);
+        });
 
-                // After WhatsApp opens, show the registration form button after 5 seconds
-                setTimeout(() => {
-                    document.getElementById("registerForm").style.display = "inline-block";
-                }, 5000);
-            }, 7000); // 7 seconds after clicking pay button
+        document.getElementById("shareButton").addEventListener("click", function() {
+            let whatsappMessage = "Hey, I have completed my payment for GNOSIS 4.0. Here is my screenshot for verification.";
+            let whatsappURL = `https://api.whatsapp.com/send?phone=+918157812238&text=${encodeURIComponent(whatsappMessage)}`;
+            
+            window.open(whatsappURL, "_blank");
+
+            // Show "Proceed to Registration" button after WhatsApp opens
+            setTimeout(() => {
+                document.getElementById("registerForm").style.display = "inline-block";
+            }, 5000);
         });
 
         document.getElementById("registerForm").addEventListener("click", function() {
-            window.location.href = "https://forms.gle/your-google-form-link";
+            window.location.href = "https://docs.google.com/forms/d/e/1FAIpQLSeTyEsj4-tN4xsrVnpy5kJi3z2AolwD-V4UWGoBOkSMN2BmGQ/viewform?usp=header";
         });
     </script>
 
