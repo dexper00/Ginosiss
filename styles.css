@@ -1,4 +1,4 @@
-/* Ensure video container takes full screen */
+/* Video Background */
 .video-container {
     position: fixed;
     top: 0;
@@ -9,18 +9,17 @@
     z-index: -1;
 }
 
-/* Make the video adjust to screen size */
 .video-container video {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100vw;
     height: 100vh;
-    object-fit: cover; /* Ensures the video fills the screen without distortion */
+    object-fit: cover;
     transform: translate(-50%, -50%);
 }
 
-/* Dark overlay for better readability */
+/* Dark Overlay */
 .overlay {
     position: fixed;
     top: 0;
@@ -30,7 +29,7 @@
     background: rgba(0, 0, 0, 0.5);
 }
 
-/* Center content */
+/* Center Content */
 .content {
     position: absolute;
     top: 50%;
@@ -40,6 +39,33 @@
     color: white;
     font-family: "Poppins", sans-serif;
     z-index: 2;
+}
+
+/* 3D Image Slider */
+.slider-container {
+    width: 300px;
+    height: 200px;
+    perspective: 1000px;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.slider {
+    display: flex;
+    width: 400%;
+    transition: transform 1s ease-in-out;
+}
+
+.slide {
+    width: 100%;
+    flex: 0 0 25%;
+}
+
+.slide img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
 /* Button Styling */
@@ -64,10 +90,9 @@ button:hover {
 
 /* Responsive Fixes */
 @media (max-width: 768px) {
-    .video-container video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    .slider-container {
+        width: 80%;
+        height: 150px;
     }
 
     .content h1 {
