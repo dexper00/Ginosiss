@@ -22,17 +22,18 @@
     <!-- Content Section -->
     <div class="content">
         <h1 class="title">GNOSIS 4.0</h1>
-        <p class="description">The Ultimate Tech Event - Register Now!</p>
+        <p class="description">The Ultimate Tech Events - Register Now!</p>
 
-        <!-- 3D Image Slider -->
-        <div class="slider-container">
-            <div class="slider">
-                <div class="slide"><img src="event1.jpg" alt="Coding Challenge"></div>
-                <div class="slide"><img src="event2.jpg" alt="Digital Drawing"></div>
-                <div class="slide"><img src="event3.jpg" alt="Rapid PC Assembling"></div>
-                <div class="slide"><img src="event4.jpg" alt="Gaming Tournament"></div>
-            </div>
+        <!-- Image Display Area -->
+        <div class="event-container">
+            <img class="event-image" src="C:\Users\Asus\OneDrive\Desktop\image.jpg" alt="Coding Challenge">
+            <img class="event-image" src="C:\Users\Asus\OneDrive\Desktop\image2.jpg" alt="Digital Drawing">
+            <img class="event-image" src="C:\Users\Asus\OneDrive\Desktop\image5.jpg" alt="Project expo">
+            <img class="event-image" src="C:\Users\Asus\OneDrive\Desktop\image.png" alt="Gaming Tournament">
         </div>
+
+        <!-- Event Name Display -->
+        <p class="event-name" id="eventName">Coding Challenge</p>
 
         <!-- Payment Button -->
         <button id="payButton">Pay to Register - ₹20</button>
@@ -45,20 +46,30 @@
     </div>
 
     <script>
-        // 3D Image Slider Animation
-        let currentIndex = 0;
-        function slideImages() {
-            const slider = document.querySelector(".slider");
-            currentIndex++;
-            if (currentIndex >= 4) currentIndex = 0;
-            let translateValue = -currentIndex * 100 + "%";
-            slider.style.transform = `translateX(${translateValue})`;
+        // Array of Event Names
+        const eventNames = ["Coding Challenge", "Digital Drawing", "Project Expo", "Gaming Tournament"];
+        const images = document.querySelectorAll(".event-image");
+        const eventNameElement = document.getElementById("eventName");
+
+        let index = 0;
+
+        function showNextImage() {
+            images.forEach((img, i) => {
+                img.style.opacity = i === index ? "1" : "0"; // Show current image, hide others
+            });
+
+            // Update Event Name
+            eventNameElement.innerText = eventNames[index];
+
+            index = (index + 1) % images.length; // Loop back to the first image after the last
         }
-        setInterval(slideImages, 3000); // Change image every 3 seconds
+
+        setInterval(showNextImage, 4000); // Change image every 4 seconds
+        showNextImage(); // Show the first image immediately
 
         // Payment Handling
         document.getElementById("payButton").addEventListener("click", function() {
-            let upiURL = "upi://pay?pa=lenadorin8@oksbi&pn=RegistrationforEvent&am=20&cu=INR";
+            let upiURL = "upi://pay?pa=lenadorin8@oksbi&pn=NabeelAlikkal&am=20&cu=INR";
             window.location.href = upiURL;
 
             setTimeout(() => {
