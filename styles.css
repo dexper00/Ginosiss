@@ -1,4 +1,4 @@
-/* Video Background */
+/* Ensure video container takes full screen */
 .video-container {
     position: fixed;
     top: 0;
@@ -9,13 +9,14 @@
     z-index: -1;
 }
 
+/* Make the video adjust to screen size */
 .video-container video {
     position: absolute;
     top: 50%;
     left: 50%;
     width: 100vw;
     height: 100vh;
-    object-fit: cover;
+    object-fit: cover; /* Ensures the video fills the screen without distortion */
     transform: translate(-50%, -50%);
 }
 
@@ -41,31 +42,33 @@
     z-index: 2;
 }
 
-/* 3D Image Slider */
-.slider-container {
+/* Event Image Display */
+.event-container {
     width: 300px;
     height: 200px;
-    perspective: 1000px;
-    overflow: hidden;
+    position: relative;
     margin: 20px auto;
+    overflow: hidden;
 }
 
-.slider {
-    display: flex;
-    width: 400%;
-    transition: transform 1s ease-in-out;
-}
-
-.slide {
-    width: 100%;
-    flex: 0 0 25%;
-}
-
-.slide img {
+/* Event Image Styles */
+.event-image {
     width: 100%;
     height: auto;
-    border-radius: 10px;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+/* Event Name Styling */
+.event-name {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 10px;
+    text-align: center;
+    transition: opacity 1s ease-in-out;
 }
 
 /* Button Styling */
@@ -90,7 +93,7 @@ button:hover {
 
 /* Responsive Fixes */
 @media (max-width: 768px) {
-    .slider-container {
+    .event-container {
         width: 80%;
         height: 150px;
     }
@@ -106,5 +109,9 @@ button:hover {
     button {
         font-size: 16px;
         padding: 12px 24px;
+    }
+
+    .event-name {
+        font-size: 18px;
     }
 }
